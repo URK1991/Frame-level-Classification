@@ -14,7 +14,7 @@ def device_avail():
     print(torch.cuda.device_count())
     return device
 
-def train_model():
+def train_model(model_type):
     torch.manual_seed(0)
     data_dir = ''
     device = device_avail()
@@ -26,8 +26,14 @@ def train_model():
     }
     
     dataset_sizes = {x: len(image_datasets[x]) for x in ['Train', 'Test']}
-    
-    model = get_model(num_classes=4).to(device)
+
+    if model_type=='ResNet18':
+        model = get_model_R18(num_classes=4).to(device)
+    elif model_type=='ResNet18_SA':
+        model = get_model_R18_SA(num_classes=4).to(device)
+    else:
+        print('the model you requested is not available, try adding the model in model.py')
+        
     best_model_wts = copy.deepcopy(model.state_dict())
 
     criterion = nn.CrossEntropyLoss().to(device)
