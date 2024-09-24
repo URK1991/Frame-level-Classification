@@ -1,14 +1,3 @@
-import os
-import copy
-import torch
-import torch.optim as optim
-import torch.nn as nn
-import torch.backends.cudnn as cudnn
-from torch.utils.data import DataLoader
-from torchvision import datasets
-from models import get_model
-from data_transforms import get_transforms
-
 def device_avail():
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print(torch.cuda.device_count())
