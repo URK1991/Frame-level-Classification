@@ -29,7 +29,7 @@ class ResNet(nn.Module):
         super(ResNet, self).__init__()
         self.class_num = class_num
 
-        backbone = torchvision.models.resnet18(pretrained=True)
+        backbone = torchvision.models.resnet18(pretrained=False)
         backbone_layers = list(backbone.children())
         self.fc_inputs = backbone.fc.in_features
 
