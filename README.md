@@ -3,7 +3,7 @@
   - _data_transforms.py_ lists down the data augmentations applied during training
   - _rejection_loss.py_ is the implementation of the rejection loss and can be used in _Train.py_
   - _Train.py_ is used to train and validate the model
-  - To add a layer of explainability on how your model works use _GradCAM.py_
+  - To add a layer of explainability on what parts of your trained model focuses on use _GradCAM.py_
 
 **Related Published Work**
 
