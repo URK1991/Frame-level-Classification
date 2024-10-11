@@ -5,7 +5,7 @@
   - _Train.py_ is used to train and validate the model
   - To add a layer of explainability on what parts of your trained model focuses on use _GradCAM.py_
 
-**Related Published Work**
+**Related Work**
 
 - ResNet18 demonstrated the best performance for LUS frame-level classification in adults
   https://doi.org/10.1016/j.ultras.2023.106994
