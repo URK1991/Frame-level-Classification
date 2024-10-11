@@ -19,10 +19,17 @@ def train_model(model_type):
     data_dir = ''
     device = device_avail()
 
+    #Hyper-parameters you can set (and tune them based on the requirements
+    #----------------------------------------------------------------------
+    batchsize = 4
+    l_rate = 1e-5 #learning rate
+    w_d = 1e-6 #weight decay
+    #----------------------------------------------------------------------
+    
     image_datasets = {x: datasets.ImageFolder(os.path.join(data_dir, x), get_transforms(x)) for x in ['Train', 'Test']}
     dataloaders = {
-        'Train': DataLoader(image_datasets['Train'], batch_size=4, shuffle=True, num_workers=3),
-        'Test': DataLoader(image_datasets['Test'], batch_size=4, shuffle=False, num_workers=3)
+        'Train': DataLoader(image_datasets['Train'], batch_size=batchsize, shuffle=True, num_workers=3),
+        'Test': DataLoader(image_datasets['Test'], batch_size=batchsize, shuffle=False, num_workers=3)
     }
     
     dataset_sizes = {x: len(image_datasets[x]) for x in ['Train', 'Test']}
@@ -37,7 +44,7 @@ def train_model(model_type):
     best_model_wts = copy.deepcopy(model.state_dict())
 
     criterion = nn.CrossEntropyLoss().to(device)
-    optimizer_ft = optim.SGD(model.parameters(), lr=0.00001, weight_decay=0.000001)
+    optimizer_ft = optim.SGD(model.parameters(), lr=l_rate, weight_decay=w_d)
 
     best_acc = 0.0
     the_last_loss = 100
