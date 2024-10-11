@@ -44,7 +44,7 @@ def train_model(model_type):
     best_model_wts = copy.deepcopy(model.state_dict())
 
     criterion = nn.CrossEntropyLoss().to(device)
-    optimizer_ft = optim.SGD(model.parameters(), lr=l_rate, weight_decay=w_d)
+    optimizer_ft = optim.SGD(model.parameters(), lr=l_rate, weight_decay=w_d) #you can try other opimtizers as Adam or AdamW
 
     best_acc = 0.0
     the_last_loss = 100
